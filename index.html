@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>King Brand Store</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #0f172a;
+    color: white;
+    margin: 0;
+    text-align: center;
+}
+
+header {
+    background: #22c55e;
+    padding: 20px;
+    font-size: 28px;
+}
+
+.search {
+    margin: 20px;
+}
+
+input {
+    padding: 10px;
+    width: 250px;
+}
+
+.categories button {
+    margin: 5px;
+    padding: 10px;
+    background: #22c55e;
+    border: none;
+    cursor: pointer;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: #1e293b;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.price {
+    color: #22c55e;
+    font-weight: bold;
+}
+
+button {
+    margin-top: 10px;
+    padding: 8px;
+    background: #22c55e;
+    border: none;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>🛒 King Brand Store</header>
+
+<!-- 🔍 البحث -->
+<div class="search">
+    <input type="text" id="search" placeholder="ابحث عن منتج..." onkeyup="searchProduct()">
+</div>
+
+<!-- 🧩 التصنيفات -->
+<div class="categories">
+    <button onclick="filter('all')">الكل</button>
+    <button onclick="filter('keyboard')">كيبورد</button>
+    <button onclick="filter('mouse')">ماوس</button>
+    <button onclick="filter('headset')">سماعات</button>
+</div>
+
+<!-- 🛒 المنتجات -->
+<div class="products" id="products">
+
+    <div class="card" data-category="keyboard">
+        <img src="keyboard.jpg">
+        <h3>كيبورد RGB</h3>
+        <p class="price">250 جنيه</p>
+        <button onclick="buy('كيبورد RGB')">اطلب</button>
+    </div>
+
+    <div class="card" data-category="mouse">
+        <img src="mouse.jpg">
+        <h3>ماوس جيمنج</h3>
+        <p class="price">120 جنيه</p>
+        <button onclick="buy('ماوس جيمنج')">اطلب</button>
+    </div>
+
+    <div class="card" data-category="headset">
+        <img src="headset.jpg">
+        <h3>سماعات</h3>
+        <p class="price">300 جنيه</p>
+        <button onclick="buy('سماعات')">اطلب</button>
+    </div>
+
+</div>
+
+<script>
+
+// 📲 واتساب
+function buy(product){
+    let phone = "201035119581"; // حط رقمك (بدون 0)
+    let msg = "عايز أطلب: " + product;
+    let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
+    window.open(url, "_blank");
+}
+
+// 🔍 البحث
+function searchProduct(){
+    let input = document.getElementById("search").value.toLowerCase();
+    let cards = document.getElementsByClassName("card");
+
+    for(let i=0;i<cards.length;i++){
+        let title = cards[i].innerText.toLowerCase();
+        cards[i].style.display = title.includes(input) ? "block" : "none";
+    }
+}
+
+// 🧩 الفلترة
+function filter(category){
+    let cards = document.getElementsByClassName("card");
+
+    for(let i=0;i<cards.length;i++){
+        let cat = cards[i].getAttribute("data-category");
+        if(category == "all" || cat == category){
+            cards[i].style.display = "block";
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+}
+
+</script>
+<div style="margin:20px;">
+    <h3>تابعنا</h3>
+
+    <a href="https://www.facebook.com/yourpage" target="_blank" style="color:white; text-decoration:none;">
+        <div style="background:#1877f2; padding:10px; margin:5px; border-radius:8px;">
+            Facebook
+        </div>
+    </a>
+
+    <a href="https://www.tiktok.com/@yourname" target="_blank" style="color:white; text-decoration:none;">
+        <div style="background:black; padding:10px; margin:5px; border-radius:8px;">
+            TikTok
+        </div>
+    </a>
+</div>
+</body>
+</html>
