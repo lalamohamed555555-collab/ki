@@ -93,12 +93,12 @@ button {
 <!-- 🛒 المنتجات -->
 <div class="products" id="products">
 <div style="text-align:center; margin:20px;">
-    <h2>كيبورد RGB Gaming 👑</h2>
-    <img src="gaming-keyboard.jpg.jpeg" width="300" style="border-radius:12px;">
-    <p style="font-size:22px; color:green;">
-        السعر: 1000 جنيه
-    </p>
-    <button onclick="alert('تم اختيار المنتج 👍')"
+    <div class="card" data-category="keyboard">
+    <img src="keyboard.jpg">
+    <h3>gaming-keyboard.jpg.jpeg</h3>
+    <p class="price">1000 جنيه</p>
+    <button onclick="buy('كيبورد')">اطلب</button>
+    </div>
         style="padding:10px 20px; background:green; color:white; border:none; border-radius:8px; cursor:pointer;">
         اطلب الآن
     </button>
