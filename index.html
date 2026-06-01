@@ -3,72 +3,127 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>King Brand Store</title>
+<title>King Brand Store Pro</title>
 
 <style>
-body {
-
-    font-family: Arial;
-    background: #0f172a;
-    color: white;
-    margin: 0;
-    text-align: center;
+body{
+    margin:0;
+    font-family:Arial;
+    background:#0f172a;
+    color:white;
+    text-align:center;
+    overflow-x:hidden;
 }
 
-header {
-    background: #22c55e;
-    padding: 20px;
-    font-size: 28px;
+/* الهيدر */
+header{
+    background:#22c55e;
+    padding:18px;
+    font-size:26px;
+    font-weight:bold;
+    animation: slideDown 0.8s ease;
 }
 
-.search {
-    margin: 20px;
+/* البحث */
+.search input{
+    padding:12px;
+    width:260px;
+    margin:15px;
+    border-radius:10px;
+    border:none;
+    outline:none;
+    transition:0.3s;
 }
 
-input {
-    padding: 10px;
-    width: 250px;
+.search input:focus{
+    transform:scale(1.05);
 }
 
-.categories button {
-    margin: 5px;
-    padding: 10px;
-    background: #22c55e;
-    border: none;
-    cursor: pointer;
+/* المنتجات */
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:18px;
+    padding:20px;
 }
 
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
+/* كرت المنتج */
+.card{
+    background:#1e293b;
+    padding:12px;
+    border-radius:14px;
+    cursor:pointer;
+
+    opacity:0;
+    transform:translateY(30px);
+    animation: fadeUp 0.6s forwards;
 }
 
-.card {
-    background: #1e293b;
-    padding: 15px;
-    border-radius: 12px;
+.card:hover{
+    transform:translateY(-10px) scale(1.03);
+    transition:0.3s;
+    box-shadow:0 10px 25px rgba(34,197,94,0.3);
 }
 
-.card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
+/* الصور */
+.card img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+    border-radius:10px;
 }
 
-.price {
-    color: #22c55e;
-    font-weight: bold;
+/* السعر */
+.price{
+    color:#22c55e;
+    font-weight:bold;
 }
 
-button {
-    margin-top: 10px;
-    padding: 8px;
-    background: #22c55e;
-    border: none;
-    cursor: pointer;
+/* الأزرار */
+button{
+    background:#22c55e;
+    border:none;
+    padding:10px;
+    margin-top:8px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 10px #22c55e;
+}
+
+/* السلة */
+.cart{
+    position:fixed;
+    top:10px;
+    right:10px;
+    background:#1e293b;
+    padding:10px;
+    border-radius:12px;
+    width:200px;
+    animation: slideRight 0.8s ease;
+}
+
+/* أنيميشن */
+@keyframes fadeUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes slideDown{
+    from{transform:translateY(-100%);}
+    to{transform:translateY(0);}
+}
+
+@keyframes slideRight{
+    from{transform:translateX(120%);}
+    to{transform:translateX(0);}
 }
 </style>
 </head>
@@ -77,128 +132,117 @@ button {
 
 <header>🛒 King Brand Store</header>
 
-<!-- 🔍 البحث -->
+<!-- البحث -->
 <div class="search">
-    <input type="text" id="search" placeholder="ابحث عن منتج..." onkeyup="searchProduct()">
+<input type="text" id="search" placeholder="ابحث عن منتج..." onkeyup="searchProduct()">
 </div>
 
-<!-- 🧩 التصنيفات -->
-<div class="categories">
-    <button onclick="filter('all')">الكل</button>
-    <button onclick="filter('keyboard')">كيبورد</button>
-    <button onclick="filter('mouse')">ماوس</button>
-    <button onclick="filter('headset')">سماعات</button>
+<!-- السلة -->
+<div class="cart">
+<h3>🛒 السلة</h3>
+<div id="cartItems"></div>
+<p>الإجمالي: <span id="total">0</span> جنيه</p>
+<button onclick="checkout()">اطلب واتساب</button>
 </div>
 
-<!-- 🛒 المنتجات -->
+<!-- المنتجات -->
 <div class="products" id="products">
-<div style="text-align:center; margin:20px;">
-    <<div class="card" data-category="keyboard">
-    <img src="gaming-keyboard.jpg.jpeg">
-    <h3>كيبورد</h3>
-    <p class="price">1000 جنيه</p>
-    <button onclick="buy('كيبورد')">اطلب</button>
+
+<div class="card" style="animation-delay:0.1s" onclick="openProduct('كيبورد عادي','1000','gaming-keyboard.jpg.jpeg')">
+<img src="gaming-keyboard.jpg.jpeg">
+<h3>كيبورد عادي</h3>
+<p class="price">1000 جنيه</p>
+<button onclick="addToCart('كيبورد عادي',1000,event)">إضافة للسلة</button>
 </div>
-<div class="product">
-  <img src="ajazz-ak820-max-ultra.jpg.jpeg" alt="AJAZZ AK820 MAX ULTRA Keyboard" style="width:200px;">
-  <h2>كيبورد AJAZZ AK820 MAX ULTRA</h2>
-  <p style="color:green;">السعر: 5500 جنيه</p>
-  <a href="https://wa.me/201035119581?text=عايز اطلب كيبورد AJAZZ AK820 MAX ULTRA" target="_blank">
-    <button style="background:green;color:white;padding:10px 20px;border:none;border-radius:8px;">
-      اطلب الآن
-    </button>
-  </a>
+
+<div class="card" style="animation-delay:0.2s" onclick="openProduct('AJAZZ AK820','5500','ajazz-ak820-max-ultra.jpg.jpeg')">
+<img src="ajazz-ak820-max-ultra.jpg.jpeg">
+<h3>كيبورد AJAZZ AK820</h3>
+<p class="price">5500 جنيه</p>
+<button onclick="addToCart('AJAZZ AK820',5500,event)">إضافة للسلة</button>
 </div>
+
+<div class="card" style="animation-delay:0.3s" onclick="openProduct('ماوس RGB','1500','mouse.jpg.jpeg')">
+<img src="mouse.jpg.jpeg">
+<h3>ماوس Gaming RGB</h3>
+<p class="price">1500 جنيه</p>
+<button onclick="addToCart('ماوس RGB',1500,event)">إضافة للسلة</button>
 </div>
-   <div class="product">
-  <img src="mouse.jpg.jpeg" alt="Gaming Mouse" style="width:200px;">
-  <h2>ماوس Gaming RGB</h2>
-  <p style="color:green;">السعر: 1500 جنيه</p>
-  <a href="https://wa.me/201035119581?text=عايز اطلب ماوس Gaming RGB" target="_blank">
-    <button style="background:green;color:white;padding:10px 20px;border:none;border-radius:8px;">
-      اطلب الآن
-    </button>
-  </a>
-</div>
-    <div class="product">
-  <img src="ajazz-ahm10-max.jpg.jpeg" alt="AJAZZ AHM10 MAX Headset" style="width:200px;">
-  <h2>سماعة AJAZZ AHM10 MAX</h2> 
-  <p style="color:green;">السعر: 3700 جنيه</p>
-  <a href="https://wa.me/201035119581?text=عايز اطلب سماعة AJAZZ AHM10 MAX" target="_blank">
-    <button style="background:green;color:white;padding:10px 20px;border:none;border-radius:8px;">
-      اطلب الآن
-    </button>
-  </a>
+
+<div class="card" style="animation-delay:0.4s" onclick="openProduct('سماعة AJAZZ','3700','ajazz-ahm10-max.jpg.jpeg')">
+<img src="ajazz-ahm10-max.jpg.jpeg">
+<h3>سماعة AJAZZ AHM10 MAX</h3>
+<p class="price">3700 جنيه</p>
+<button onclick="addToCart('سماعة AJAZZ',3700,event)">إضافة للسلة</button>
 </div>
 
 </div>
 
 <script>
 
-// 📲 واتساب
-function buy(product){
-    let phone = "201035119581"; // حط رقمك (بدون 0)
-    let msg = "عايز أطلب: " + product;
-    let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
+let cart = [];
+
+// فتح صفحة المنتج
+function openProduct(name, price, img){
+    let url = `product.html?name=${encodeURIComponent(name)}&price=${price}&img=${encodeURIComponent(img)}`;
     window.open(url, "_blank");
 }
 
-// 🔍 البحث
-function searchProduct(){
-    let input = document.getElementById("search").value.toLowerCase();
-    let cards = document.getElementsByClassName("card");
-
-    for(let i=0;i<cards.length;i++){
-        let title = cards[i].innerText.toLowerCase();
-        cards[i].style.display = title.includes(input) ? "block" : "none";
-    }
+// إضافة للسلة
+function addToCart(name, price, event){
+    event.stopPropagation();
+    cart.push({name, price});
+    updateCart();
 }
 
-// 🧩 الفلترة
-function filter(category){
-    let cards = document.getElementsByClassName("card");
+// تحديث السلة
+function updateCart(){
+    let box = document.getElementById("cartItems");
+    let total = 0;
 
-    for(let i=0;i<cards.length;i++){
-        let cat = cards[i].getAttribute("data-category");
-        if(category == "all" || cat == category){
-            cards[i].style.display = "block";
-        } else {
-            cards[i].style.display = "none";
-        }
-    }
+    box.innerHTML = "";
+
+    cart.forEach((item,i)=>{
+        total += item.price;
+
+        box.innerHTML += `
+        <div>${item.name} - ${item.price}
+        <button onclick="removeItem(${i})">X</button>
+        </div>`;
+    });
+
+    document.getElementById("total").innerText = total;
+}
+
+// حذف
+function removeItem(i){
+    cart.splice(i,1);
+    updateCart();
+}
+
+// شراء
+function checkout(){
+    let phone="201035119581";
+    let msg="عايز أطلب:\n";
+
+    cart.forEach(i=>{
+        msg += "- " + i.name + " " + i.price + "\n";
+    });
+
+    window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(msg));
+}
+
+// بحث
+function searchProduct(){
+    let val=document.getElementById("search").value.toLowerCase();
+    let cards=document.querySelectorAll(".card");
+
+    cards.forEach(c=>{
+        c.style.display=c.innerText.toLowerCase().includes(val)?"block":"none";
+    });
 }
 
 </script>
-<div style="margin:20px;">
- <button onclick="window.open('https://www.facebook.com/share/1Coy162Axc/', '_blank')" 
-style="
-background:#1877F2;
-color:white;
-padding:15px 25px;
-font-size:18px;
-border:none;
-border-radius:10px;
-cursor:pointer;
-margin:10px;
-font-weight:bold;
-">
- تابعنا على فيسبوك
-</button>
-  <button onclick="window.open('https://www.tiktok.com/@king.brand.store4', '_blank')" 
-style="
-background:#000000;
-color:white;
-padding:15px 25px;
-font-size:18px;
-border:none;
-border-radius:10px;
-cursor:pointer;
-margin:10px;
-font-weight:bold;
-box-shadow:0 0 10px rgba(255,255,255,0.2);
-">
- تابعنا على تيك توك
-</button>
-</div>
+
 </body>
 </html>
