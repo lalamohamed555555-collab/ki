@@ -22,6 +22,24 @@ header{
     font-weight:bold;
 }
 
+/* 🔥 الناف بار */
+.nav{
+    background:#1e293b;
+    padding:10px;
+}
+
+.nav a{
+    color:white;
+    margin:10px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.nav a:hover{
+    color:#22c55e;
+}
+
 /* البحث */
 .search input{
     padding:12px;
@@ -29,7 +47,6 @@ header{
     margin:15px;
     border-radius:10px;
     border:none;
-    outline:none;
 }
 
 /* المنتجات */
@@ -40,17 +57,35 @@ header{
     padding:20px;
 }
 
-/* الكارت */
+/* 🔥 الكارت + أنيميشن */
 .card{
     background:#1e293b;
     padding:15px;
     border-radius:15px;
-    transition:0.3s;
+
+    opacity:0;
+    transform:translateY(40px);
+    animation:fadeUp 0.6s forwards;
 }
 
 .card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 10px 25px rgba(34,197,94,0.3);
+    transform:translateY(-10px) translateX(5px);
+    box-shadow:0 10px 25px rgba(34,197,94,0.4);
+    transition:0.3s;
+}
+
+/* ظهور تدريجي */
+.card:nth-child(1){animation-delay:0.1s}
+.card:nth-child(2){animation-delay:0.2s}
+.card:nth-child(3){animation-delay:0.3s}
+.card:nth-child(4){animation-delay:0.4s}
+.card:nth-child(5){animation-delay:0.5s}
+
+@keyframes fadeUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 /* الصور */
@@ -65,19 +100,17 @@ header{
 .price{
     color:#22c55e;
     font-weight:bold;
-    font-size:18px;
 }
 
-/* زرار */
+/* زر */
 .btn{
     display:inline-block;
     background:#22c55e;
     color:white;
-    padding:10px 15px;
+    padding:10px;
     margin-top:10px;
     border-radius:10px;
     text-decoration:none;
-    font-weight:bold;
     transition:0.3s;
 }
 
@@ -97,167 +130,68 @@ header{
 
 <header>🛒 King Brand Store</header>
 
-<!-- 🔍 البحث -->
+<!-- 🔥 الناف بار -->
+<div class="nav">
+<a href="#">الكل</a>
+<a href="#">سماعات</a>
+<a href="#">ماوسات</a>
+<a href="#">كيبوردات</a>
+<a href="#">بدات</a>
+</div>
+
+<!-- البحث -->
 <div class="search">
 <input type="text" id="search" placeholder="ابحث عن منتج..." onkeyup="searchProduct()">
 </div>
 
-<!-- 🛒 المنتجات -->
+<!-- المنتجات -->
 <div class="products">
 
-<!-- منتج -->
 <div class="card">
 <img src="gk-kunten-iem.jpg.jpeg">
 <h3>Gk Kunten type C Iem</h3>
 <p class="price">2400 جنيه</p>
-<a class="btn" href="https://wa.me/201035119581?text=عايز اطلب Gk Kunten type C Iem" target="_blank">
-اطلب الآن
-</a>
-</div> 
-<!-- منتج -->  
+<a class="btn" href="https://wa.me/201035119581?text=عايز اطلب Gk Kunten type C Iem">اطلب الآن</a>
+</div>
+
 <div class="card">
-<img src="7hz-g1.jpg.jpeg" alt="7HZ G1">
+<img src="7hz-g1.jpg.jpeg">
 <h3>7HZ G1</h3>
 <p class="price">3950 جنيه</p>
-<a class="btn" href="https://wa.me/201035119581?text=عايز اطلب 7HZ G1" target="_blank">
-اطلب الآن
-</a>
+<a class="btn" href="https://wa.me/201035119581?text=عايز اطلب 7HZ G1">اطلب الآن</a>
 </div>
-<!-- منتج -->    
+
 <div class="card">
-<img src="logitech-g102-light-sync-rgb-mouse.jpg.jpeg.jpeg" alt="Logitech G102 Mouse">
-<h3>Logitech G102 Light Sync RGB Gaming Mouse</h3>
+<img src="logitech-g102-light-sync-rgb-mouse.jpg.jpeg">
+<h3>Logitech G102 RGB Mouse</h3>
 <p class="price">1500 جنيه</p>
-<a class="btn"
-href="https://wa.me/201035119581?text=عايز%20أطلب:%20Logitech%20G102%20Light%20Sync%20RGB%20Gaming%20Mouse"
-target="_blank">
-اطلب الآن
-</a>
-<p style="font-size:12px;opacity:0.8;">
-Mouse Sensor LOD 3 CD<br>
-8000 DPI sensor<br>
-Colorful LIGHTSYNC RGB<br>
-Classic, gamer-tested design<br>
- Mechanical spring button tensioning<br>
- Customize settings with Logitech G HUB
-    </p>
-</div>    
-<!-- منتج -->    
+<a class="btn" href="https://wa.me/201035119581?text=عايز اطلب Logitech G102 RGB Mouse">اطلب الآن</a>
+</div>
+
 <div class="card">
 <img src="ajazz-carbon-fiber-mouse.jpg">
 <h3>Ajazz Carbon Fiber Mouse</h3>
 <p class="price">2000 جنيه</p>
-<a class="btn" href="https://wa.me/201035119581?text=عايز اطلب Ajazz Carbon Fiber Mouse" target="_blank">
-اطلب الآن
-</a>
-<p style="font-size:12px;opacity:0.8;">
-Lightweight carbon fiber gaming mouse with high precision and fast response, perfect for competitive gaming.
-</p>
+<a class="btn" href="https://wa.me/201035119581?text=عايز اطلب Ajazz Carbon Fiber Mouse">اطلب الآن</a>
 </div>
- <!-- منتج -->
-  <div class="card">
-<img src="7hz-zero-2-x-crinacle.jpg.jpeg">
-<h3>7HZ Zero 2 X Crinacle</h3>
-<p class="price">2950 جنيه</p>
-<a class="btn" href="https://wa.me/201035119581?text=عايز اطلب 7HZ Zero 2 X Crinacle" target="_blank">
-اطلب الآن
-</a>
-<p style="font-size:12px;opacity:0.8;">
-High-quality in-ear monitor tuned in collaboration with Crinacle, delivering clear sound, balanced tuning, and strong bass performance. Designed for comfort and long listening sessions, making it perfect for music, gaming, and everyday use.
-</p>
-</div>  
-<!-- منتج -->
+
 <div class="card">
 <img src="ajazz-ak820-max-ultra.jpg.jpeg">
-<h3>كيبورد AJAZZ AK820 MAX ULTRA</h3>
+<h3>AJAZZ AK820 MAX ULTRA</h3>
 <p class="price">5500 جنيه</p>
-<a class="btn" href="https://wa.me/201035119581?text=عايز اطلب كيبورد AJAZZ AK820 MAX ULTRA" target="_blank">
-اطلب الآن
-</a>
+<a class="btn" href="https://wa.me/201035119581?text=عايز اطلب AJAZZ AK820 MAX ULTRA">اطلب الآن</a>
 </div>
-<!-- منتج -->    
-<div class="card">
-<img src="attack-shark-l80pro.jpg.jpeg" alt="ATTACK SHARK L80PRO Wireless">
-<h3>ATTACK SHARK L80PRO Wireless</h3>
-<p class="price">3000 جنيه</p>
-<a class="btn" href="https://wa.me/201035119581?text=عايز اطلب ATTACK SHARK L80PRO Wireless" target="_blank">
-اطلب الآن
-</a>
-<p style="font-size:12px;opacity:0.8;">
-Noise Cancellation: Yes (Mic only). The headset features Environment Noise Cancellation (ENC) on the built-in microphone to filter background noise. It also uses passive noise isolation with breathable memory foam ear cushions for better sound experience.
-</p>
-</div>
-<!-- منتج --> 
-<div class="card" data-category="headset">
-<img src="redragon-h540-pro-wireless.jpg.jpeg" alt="Redragon H540 Pro Wireless">
-<h3>Redragon H540 Pro Wireless</h3>
-<p class="price">3600 جنيه</p>
-<a class="btn" 
-href="https://wa.me/201035119581?text=Redragon%20H540%20Pro%20Wireless" 
-target="_blank">
-اطلب الآن
-</a>
-<p style="font-size:12px;opacity:0.8;">
-Redragon H540 Pro Wireless Gaming Headset for PC, PS4/5, Xbox, Switch, 4-Mode (2.4G/BT/USB/3.5mm) - 7.1 Surround Sound - 3.5MM Drivers Gaming Headphones with Noise Canceling Mic - Memory Foam
-</p>
 
-</div>
-<!-- منتج -->
-<div class="card">
-<img src="ajazz-alux68-he.jpg..jpeg">
-<h3>Ajazz ALUX68 Full Aluminum HE</h3>
-<p class="price">3750 جنيه</p>
-<a class="btn" href="https://wa.me/201035119581?text=عايز اطلب Ajazz ALUX68 Full aluminum HE" target="_blank">
-اطلب الآن
-</a>
-<p style="font-size:12px;opacity:0.8;">
-High-performance mechanical gaming keyboard with responsive keys, durable build quality, and smooth typing experience—perfect for both gaming and everyday use
-</p>
-</div>
-<!-- منتج -->
-<div class="card">
-<img src="attack-shark-x6.jpg.jpeg" alt="ATTACK SHARK X6">
-<h3>ATTACK SHARK X6</h3>
-<p class="price">2800 جنيه</p>
-<a class="btn" href="https://wa.me/201035119581?text=عايز اطلب ATTACK SHARK X6" target="_blank">
-اطلب الآن
-</a>
-<!-- منتج -->
-</div>
-<div class="card">
-<img src="attack-shark-x68-he.jpg.jpeg" alt="ATTACK SHARK X68 HE">
-<h3>ATTACK SHARK X68 HE 8000Hz</h3>
-<p class="price">2600 جنيه</p>
-<a class="btn" href="https://wa.me/201035119581?text=عايز اطلب ATTACK SHARK X68 HE 8000Hz" target="_blank">
-اطلب الآن
-</a>
-<p style="font-size:12px;opacity:0.8;">
-ATTACK SHARK X68 HE 8000Hz Rapid Trigger Keyboard, 0.01mm RT Accuracy Wired Gaming Keyboard with Magnetic Switch, Adjustable Actuation, Rapid Trigger, Snap Tap, RGB Lighting for PC/Mac, White Contours
-</p>
-</div>
-<!-- منتج -->
 <div class="card">
 <img src="ajazz-ahm10-max.jpg.jpeg">
-<h3>سماعة AJAZZ AHM10 MAX</h3>
+<h3>AJAZZ AHM10 MAX</h3>
 <p class="price">3700 جنيه</p>
-<a class="btn" href="https://wa.me/201035119581?text=عايز اطلب سماعة AJAZZ AHM10 MAX" target="_blank">
-اطلب الآن
-</a>
-</div>
-
-<!-- المنتج اللي ضفناه -->
-<div class="card">
-<img src="Ajazz AK820 pro wireless.jpg.jpeg">
-<h3>Ajazz AK820 Pro Wireless</h3>
-<p class="price">3700 جنيه</p>
-<a class="btn" href="https://wa.me/201035119581?text=عايز اطلب Ajazz AK820 Pro Wireless" target="_blank">
-اطلب الآن
-</a>
+<a class="btn" href="https://wa.me/201035119581?text=عايز اطلب AJAZZ AHM10 MAX">اطلب الآن</a>
 </div>
 
 </div>
 
-<!-- 🔍 البحث -->
+<!-- البحث -->
 <script>
 function searchProduct(){
     let val = document.getElementById("search").value.toLowerCase();
@@ -269,17 +203,17 @@ function searchProduct(){
 }
 </script>
 
-<!-- 🔗 السوشيال -->
+<!-- السوشيال -->
 <div class="footer">
 
-<button onclick="window.open('https://www.facebook.com/share/1Coy162Axc/', '_blank')" 
-style="background:#1877F2;color:white;padding:15px 25px;font-size:18px;border:none;border-radius:10px;cursor:pointer;margin:10px;font-weight:bold;">
-تابعنا على فيسبوك
+<button onclick="window.open('https://www.facebook.com/share/1Coy162Axc/')"
+style="background:#1877F2;color:white;padding:15px;border:none;border-radius:10px;">
+فيسبوك
 </button>
 
-<button onclick="window.open('https://www.tiktok.com/@king.brand.store4', '_blank')" 
-style="background:#000;color:white;padding:15px 25px;font-size:18px;border:none;border-radius:10px;cursor:pointer;margin:10px;font-weight:bold;">
-تابعنا على تيك توك
+<button onclick="window.open('https://www.tiktok.com/@king.brand.store4')"
+style="background:#000;color:white;padding:15px;border:none;border-radius:10px;">
+تيك توك
 </button>
 
 </div>
