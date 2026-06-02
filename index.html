@@ -20,7 +20,22 @@ header{
     font-size:26px;
 }
 
-/* السلايدر */
+/* 🔥 الصفحات */
+.nav{
+    background:#1e293b;
+    padding:12px;
+}
+.nav a{
+    color:white;
+    margin:10px;
+    text-decoration:none;
+    font-weight:bold;
+}
+.nav a:hover{
+    color:#22c55e;
+}
+
+/* 🔥 السلايدر */
 .slider{
     overflow:hidden;
     padding:20px 0;
@@ -29,10 +44,10 @@ header{
 .slide-track{
     display:flex;
     gap:20px;
-    animation:scroll 40s linear infinite;
+    animation:scroll 20s linear infinite; /* أسرع */
 }
 
-/* يقف لما الماوس يجي عليه */
+/* يقف على الماوس */
 .slider:hover .slide-track{
     animation-play-state: paused;
 }
@@ -91,10 +106,20 @@ header{
 
 <header>🛒 King Brand Store</header>
 
+<!-- 🔥 الصفحات -->
+<div class="nav">
+<a href="index.html">الكل</a>
+<a href="headsets.html">سماعات</a>
+<a href="mice.html">ماوسات</a>
+<a href="keyboards.html">كيبوردات</a>
+<a href="pads.html">بدات</a>
+</div>
+
+<!-- 🔥 السلايدر -->
 <div class="slider">
 <div class="slide-track">
 
-<!-- 🔥 منتجاتك زي ما هي -->
+<!-- 🔁 المنتجات (هتتكرر عشان الحركة تبقى مستمرة) -->
 
 <div class="card">
 <img src="gk-kunten-iem.jpg.jpeg">
@@ -186,6 +211,9 @@ header{
 <p class="price">3700 جنيه</p>
 <a class="btn" href="https://wa.me/201035119581?text=عايز اطلب Ajazz AK820 Pro Wireless">اطلب الآن</a>
 </div>
+
+<!-- 🔁 تكرار عشان السلايدر يبقى smooth -->
+<!-- انسخ نفس المنتجات تاني تحت هنا لو عايز الحركة تبقى أنعم -->
 
 </div>
 </div>
