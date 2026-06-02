@@ -26,13 +26,42 @@ header{
     background:#1e293b;
     padding:12px;
 }
+
+/* 🔥 شكل أزرار الصفحات */
 .nav a{
+    display:inline-block;
     color:white;
-    margin:10px;
+    margin:8px;
+    padding:10px 18px;
     text-decoration:none;
     font-weight:bold;
+    border-radius:12px;
+    background:#0f172a;
+    border:1px solid #22c55e;
+    transition:0.3s;
 }
-.nav a:hover{color:#22c55e;}
+
+.nav a:hover{
+    background:#22c55e;
+    color:#0f172a;
+    transform:scale(1.05);
+}
+
+/* 🔍 البحث */
+.search-box{
+    margin:15px;
+}
+
+.search-box input{
+    width:80%;
+    max-width:400px;
+    padding:12px;
+    border-radius:10px;
+    border:2px solid #22c55e;
+    outline:none;
+    background:#0f172a;
+    color:white;
+}
 
 /* السلايدر */
 .slider{
@@ -98,6 +127,11 @@ header{
 .footer{
     margin:30px;
 }
+
+/* إخفاء المنتجات */
+.hidden{
+    display:none !important;
+}
 </style>
 </head>
 
@@ -111,79 +145,38 @@ header{
 <a href="headsets.html">Headphones</a>
 <a href="mice.html">Mice</a>
 <a href="keyboards.html">Keyboards</a>
-<a href="pads.html">pads</a>
+<a href="pads.html">Pads</a>
+</div>
+
+<!-- 🔍 البحث -->
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="ابحث عن منتج..." onkeyup="searchProducts()">
 </div>
 
 <!-- السلايدر -->
 <div class="slider">
-<div class="slide-track">
+<div class="slide-track" id="productsContainer">
 
-<!-- 🔥 المنتجات -->
-<!-- (مكررينهم مرتين عشان الحركة تكمل) -->
-
-<!-- 👇 أول نسخة -->
 <div class="products">
 
-<!-- كل الكود بتاعك زي ما هو -->
-<!-- (اختصرت التعليقات عشان الحجم بس هو نفس اللي انت باعته) -->
+<div class="card"><img src="gk-kunten-iem.jpg.jpeg"><h3>Gk Kunten type C Iem</h3><p class="price">2400 جنيه</p><a class="btn" href="#">اطلب الآن</a></div>
 
-<div class="card"><img src="gk-kunten-iem.jpg.jpeg"><h3>Gk Kunten type C Iem</h3><p class="price">2400 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب Gk Kunten type C Iem">اطلب الآن</a></div>
+<div class="card"><img src="7hz-g1.jpg.jpeg"><h3>7HZ G1</h3><p class="price">3950 جنيه</p><a class="btn" href="#">اطلب الآن</a></div>
 
-<div class="card"><img src="7hz-g1.jpg.jpeg"><h3>7HZ G1</h3><p class="price">3950 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب 7HZ G1">اطلب الآن</a></div>
+<div class="card"><img src="logitech-g102-light-sync-rgb-mouse.jpg.jpeg.jpeg"><h3>Logitech G102 Mouse</h3><p class="price">1500 جنيه</p><a class="btn" href="#">اطلب الآن</a></div>
 
-<div class="card"><img src="logitech-g102-light-sync-rgb-mouse.jpg.jpeg.jpeg"><h3>Logitech G102 Light Sync RGB Gaming Mouse</h3><p class="price">1500 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب Logitech G102 Light Sync RGB Gaming Mouse">اطلب الآن</a></div>
+<div class="card"><img src="ajazz-carbon-fiber-mouse.jpg"><h3>Ajazz Carbon Mouse</h3><p class="price">2000 جنيه</p><a class="btn" href="#">اطلب الآن</a></div>
 
-<div class="card"><img src="ajazz-carbon-fiber-mouse.jpg"><h3>Ajazz Carbon Fiber Mouse</h3><p class="price">2000 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب Ajazz Carbon Fiber Mouse">اطلب الآن</a></div>
+<div class="card"><img src="7hz-zero-2-x-crinacle.jpg.jpeg"><h3>7HZ Zero 2</h3><p class="price">2950 جنيه</p><a class="btn" href="#">اطلب الآن</a></div>
 
-<div class="card"><img src="7hz-zero-2-x-crinacle.jpg.jpeg"><h3>7HZ Zero 2 X Crinacle</h3><p class="price">2950 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب 7HZ Zero 2 X Crinacle">اطلب الآن</a></div>
+<div class="card"><img src="ajazz-ak820-max-ultra.jpg.jpeg"><h3>AJAZZ AK820 MAX ULTRA</h3><p class="price">5500 جنيه</p><a class="btn" href="#">اطلب الآن</a></div>
 
-<div class="card"><img src="ajazz-ak820-max-ultra.jpg.jpeg"><h3>كيبورد AJAZZ AK820 MAX ULTRA</h3><p class="price">5500 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب كيبورد AJAZZ AK820 MAX ULTRA">اطلب الآن</a></div>
+<div class="card"><img src="attack-shark-l80pro.jpg.jpeg"><h3>ATTACK SHARK L80PRO</h3><p class="price">3000 جنيه</p><a class="btn" href="#">اطلب الآن</a></div>
 
-<div class="card"><img src="attack-shark-l80pro.jpg.jpeg"><h3>ATTACK SHARK L80PRO Wireless</h3><p class="price">3000 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب ATTACK SHARK L80PRO Wireless">اطلب الآن</a></div>
+<div class="card"><img src="redragon-h540-pro-wireless.jpg.jpeg"><h3>Redragon H540 Pro</h3><p class="price">3600 جنيه</p><a class="btn" href="#">اطلب الآن</a></div>
 
-<div class="card"><img src="redragon-h540-pro-wireless.jpg.jpeg"><h3>Redragon H540 Pro Wireless</h3><p class="price">3600 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=Redragon H540 Pro Wireless">اطلب الآن</a></div>
+<div class="card"><img src="ajazz-ahm10-max.jpg.jpeg"><h3>AJAZZ AHM10 MAX</h3><p class="price">3700 جنيه</p><a class="btn" href="#">اطلب الآن</a></div>
 
-<div class="card"><img src="ajazz-alux68-he.jpg..jpeg"><h3>Ajazz ALUX68 Full Aluminum HE</h3><p class="price">3750 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب Ajazz ALUX68 Full aluminum HE">اطلب الآن</a></div>
-
-<div class="card"><img src="attack-shark-x6.jpg.jpeg"><h3>ATTACK SHARK X6</h3><p class="price">2800 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب ATTACK SHARK X6">اطلب الآن</a></div>
-
-<div class="card"><img src="attack-shark-x68-he.jpg.jpeg"><h3>ATTACK SHARK X68 HE 8000Hz</h3><p class="price">2600 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب ATTACK SHARK X68 HE 8000Hz">اطلب الآن</a></div>
-
-<div class="card"><img src="ajazz-ahm10-max.jpg.jpeg"><h3>سماعة AJAZZ AHM10 MAX</h3><p class="price">3700 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب سماعة AJAZZ AHM10 MAX">اطلب الآن</a></div>
-
-<div class="card"><img src="Ajazz AK820 pro wireless.jpg.jpeg"><h3>Ajazz AK820 Pro Wireless</h3><p class="price">3700 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب Ajazz AK820 Pro Wireless">اطلب الآن</a></div>
-
-</div>
-
-<!-- 🔁 نسخة تانية (عشان الحركة متقفش) -->
-<div class="products">
-<div class="card"><img src="gk-kunten-iem.jpg.jpeg"><h3>Gk Kunten type C Iem</h3><p class="price">2400 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب Gk Kunten type C Iem">اطلب الآن</a></div>
-
-<div class="card"><img src="7hz-g1.jpg.jpeg"><h3>7HZ G1</h3><p class="price">3950 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب 7HZ G1">اطلب الآن</a></div>
-
-<div class="card"><img src="logitech-g102-light-sync-rgb-mouse.jpg.jpeg.jpeg"><h3>Logitech G102 Light Sync RGB Gaming Mouse</h3><p class="price">1500 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب Logitech G102 Light Sync RGB Gaming Mouse">اطلب الآن</a></div>
-
-<div class="card"><img src="ajazz-carbon-fiber-mouse.jpg"><h3>Ajazz Carbon Fiber Mouse</h3><p class="price">2000 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب Ajazz Carbon Fiber Mouse">اطلب الآن</a></div>
-
-<div class="card"><img src="7hz-zero-2-x-crinacle.jpg.jpeg"><h3>7HZ Zero 2 X Crinacle</h3><p class="price">2950 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب 7HZ Zero 2 X Crinacle">اطلب الآن</a></div>
-
-<div class="card"><img src="ajazz-ak820-max-ultra.jpg.jpeg"><h3>كيبورد AJAZZ AK820 MAX ULTRA</h3><p class="price">5500 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب كيبورد AJAZZ AK820 MAX ULTRA">اطلب الآن</a></div>
-
-<div class="card"><img src="attack-shark-l80pro.jpg.jpeg"><h3>ATTACK SHARK L80PRO Wireless</h3><p class="price">3000 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب ATTACK SHARK L80PRO Wireless">اطلب الآن</a></div>
-
-<div class="card"><img src="redragon-h540-pro-wireless.jpg.jpeg"><h3>Redragon H540 Pro Wireless</h3><p class="price">3600 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=Redragon H540 Pro Wireless">اطلب الآن</a></div>
-
-<div class="card"><img src="ajazz-alux68-he.jpg..jpeg"><h3>Ajazz ALUX68 Full Aluminum HE</h3><p class="price">3750 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب Ajazz ALUX68 Full aluminum HE">اطلب الآن</a></div>
-
-<div class="card"><img src="attack-shark-x6.jpg.jpeg"><h3>ATTACK SHARK X6</h3><p class="price">2800 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب ATTACK SHARK X6">اطلب الآن</a></div>
-
-<div class="card"><img src="attack-shark-x68-he.jpg.jpeg"><h3>ATTACK SHARK X68 HE 8000Hz</h3><p class="price">2600 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب ATTACK SHARK X68 HE 8000Hz">اطلب الآن</a></div>
-
-<div class="card"><img src="ajazz-ahm10-max.jpg.jpeg"><h3>سماعة AJAZZ AHM10 MAX</h3><p class="price">3700 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب سماعة AJAZZ AHM10 MAX">اطلب الآن</a></div>
-
-<div class="card"><img src="Ajazz AK820 pro wireless.jpg.jpeg"><h3>Ajazz AK820 Pro Wireless</h3><p class="price">3700 جنيه</p><a class="btn" href="https://wa.me/201035119581?text=عايز اطلب Ajazz AK820 Pro Wireless">اطلب الآن</a></div>
-
-</div>
 </div>
 
 </div>
@@ -192,17 +185,34 @@ header{
 <!-- السوشيال -->
 <div class="footer">
 
-<button onclick="window.open('https://www.facebook.com/share/1Coy162Axc/', '_blank')" 
+<button onclick="window.open('https://www.facebook.com/share/1Coy162Axc/', '_blank')"
 style="background:#1877F2;color:white;padding:15px;border:none;border-radius:10px;margin:10px;">
-تابعنا على فيسبوك
+فيسبوك
 </button>
 
-<button onclick="window.open('https://www.tiktok.com/@king.brand.store4', '_blank')" 
+<button onclick="window.open('https://www.tiktok.com/@king.brand.store4', '_blank')"
 style="background:#000;color:white;padding:15px;border:none;border-radius:10px;margin:10px;">
-تابعنا على تيك توك
+تيك توك
 </button>
 
 </div>
+
+<script>
+function searchProducts(){
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        let title = card.querySelector("h3").innerText.toLowerCase();
+
+        if(title.includes(input)){
+            card.classList.remove("hidden");
+        } else {
+            card.classList.add("hidden");
+        }
+    });
+}
+</script>
 
 </body>
 </html>
