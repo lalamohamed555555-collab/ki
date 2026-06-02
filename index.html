@@ -25,7 +25,20 @@ header{
 .nav{  
     background:#1e293b;  
     padding:12px;  
-}  
+} 
+  .search-box{
+    margin:15px 0;
+}
+
+.search-box input{
+    width:80%;
+    max-width:400px;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    outline:none;
+    font-size:16px;
+}
 .nav a{  
     color:white;  
     margin:10px;  
@@ -104,7 +117,12 @@ header{
 <body>  
   
 <header>🛒 King Brand Store</header>  
-  
+
+<!-- 🔎 البحث -->
+<div class="search-box">
+<input type="text" id="search" placeholder="ابحث عن المنتج..." onkeyup="searchProducts()">
+</div>
+
 <!-- الصفحات -->  
 <div class="nav">  
 <a href="index.html">All products</a>  
@@ -203,6 +221,20 @@ style="background:#000;color:white;padding:15px;border:none;border-radius:10px;m
 </button>  
   
 </div>  
-  
+  <script>
+function searchProducts(){
+    let input = document.getElementById("search").value.toLowerCase();
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        let title = card.querySelector("h3").innerText.toLowerCase();
+        if(title.includes(input)){
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+</script>
 </body>  
 </html>
