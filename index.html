@@ -151,20 +151,15 @@ header{
 <header>🛒 King Brand Store</header>  
 
 <!-- 🔎 البحث -->
-.search-box input{
-    width:85%;
-    max-width:450px;
-    padding:14px;
-    border-radius:25px;
-    border:1px solid #22c55e;
-    outline:none;
-    font-size:16px;
-    background:#0f172a;
-    color:white;
-    text-align:center;
-    box-shadow:0 0 10px rgba(34,197,94,0.3);
-    transition:0.3s;
-}
+<header>🛒 King Brand Store</header>
+
+<!-- 🔎 البحث (ده مكان السيرش) -->
+<div class="search-box">
+<input type="text" id="search" placeholder="ابحث عن المنتج..." onkeyup="searchProducts()">
+</div>
+
+<!-- الصفحات -->
+<div class="nav">
 
 .search-box input:focus{
     box-shadow:0 0 20px #22c55e;
